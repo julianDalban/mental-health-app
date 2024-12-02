@@ -1,3 +1,4 @@
+import ButtonMain from "./ButtonMain";
 import Navbar from "./Navbar";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
         <p>
           Welcome to Mind Bloom!
         </p>
+        <ButtonMain text={'Home'}/>
       </header>
     </div>
   );
