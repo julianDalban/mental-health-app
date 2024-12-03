@@ -11,14 +11,6 @@ const AuthForm = ({ isSignUp }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'username') setUsername(value);
-    if (name === 'email') setEmail(value);
-    if (name === 'password') setPassword(value);
-    if (name === 'confirmPassword') setConfirmPassword(value);
-  };
-
   const onFinish = async (e) => {
     e.preventDefault();
 
@@ -36,18 +28,18 @@ const AuthForm = ({ isSignUp }) => {
         await signInWithEmailAndPassword(auth, email, password);
         alert('Sign in successful!');
       }
-      navigate('/');
+      navigate('/workouts');
     } catch (err) {
       alert(err.message);
     }
   };
 
-  const handleGoogleSignIn = async () => {
+    const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
       alert('Signed in with Google successfully!');
-      navigate('/home');
+      navigate('/workouts');
     } catch (err) {
       alert(err.message);
     }
@@ -78,7 +70,6 @@ const AuthForm = ({ isSignUp }) => {
                   id="username"
                   autoComplete="username"
                   value={username}
-                  onChange={handleChange}
                   required
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
                 />
@@ -97,7 +88,6 @@ const AuthForm = ({ isSignUp }) => {
                 id="email"
                 autoComplete="email"
                 value={email}
-                onChange={handleChange}
                 required
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
               />
@@ -122,7 +112,6 @@ const AuthForm = ({ isSignUp }) => {
                 id="password"
                 autoComplete="current-password"
                 value={password}
-                onChange={handleChange}
                 required
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
               />
@@ -142,8 +131,6 @@ const AuthForm = ({ isSignUp }) => {
                   name="confirmPassword"
                   id="confirmPassword"
                   autoComplete="current-password"
-                  value={confirmPassword}
-                  onChange={handleChange}
                   required
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
                 />
