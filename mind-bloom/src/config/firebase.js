@@ -5,13 +5,13 @@ import { getFirestore } from "firebase/firestore";
 
 // Your Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyASKIQ-mEfJ4PomJMtSfJG-5Y9X5WLJ7zY",
-  authDomain: "mindbloom-d66d8.firebaseapp.com",
-  projectId: "mindbloom-d66d8",
-  storageBucket: "mindbloom-d66d8.firebasestorage.app",
-  messagingSenderId: "590102057351",
-  appId: "1:590102057351:web:7f7de3bdee8e22d3928322",
-  measurementId: "G-YT5G66L7FQ"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
