@@ -1,5 +1,5 @@
 import React from "react";
-import brainIcon from './pictures/new_logo_face_brain.png';
+import brainIcon from "./../pictures/new_logo_face_brain.png"
 
 function Logo() {
     return (

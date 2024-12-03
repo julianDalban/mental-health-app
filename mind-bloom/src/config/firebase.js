@@ -3,8 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// https://firebase.google.com/docs/web/setup#available-libraries
-
+// Your Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyASKIQ-mEfJ4PomJMtSfJG-5Y9X5WLJ7zY",
   authDomain: "mindbloom-d66d8.firebaseapp.com",
@@ -15,7 +14,7 @@ const firebaseConfig = {
   measurementId: "G-YT5G66L7FQ"
 };
 
-
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 export const auth = getAuth(app);
