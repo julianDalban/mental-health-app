@@ -3,7 +3,7 @@ import brainIcon from './pictures/new_logo_face_brain.png';
 
 function Logo() {
     return (
-        <div className="p-6 max-w-sm mx-auto bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl shadow-lg flex items-center gap-x-4 hover:from-teal-600 ">
+        <div className="p-6 max-w-sm mx-auto bg-gradient-to-r from-green-500 to-teal-500 rounded-xl shadow-lg flex items-center gap-x-4 ">
             <div className="shrink-0">
                 <img className="size-12 git bg-origin-border" src={brainIcon} alt="Mind Bloom Logo" />
             </div>

@@ -4,7 +4,7 @@ import ButtonMain from "./ButtonMain";
 
 function Navbar() {
   return (
-    <nav className="bg-green-500 p-4">
+    <nav className="bg-emerald-400 p-4">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <Logo />
