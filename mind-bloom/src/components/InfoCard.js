@@ -6,7 +6,7 @@ function InfoCard() {
                 <figure>
                     <img
                     src={brainIcon}
-                    alt="Test Image" />
+                    alt="Test" />
                 </figure>
                 <div className="card-body">
                     <h2 className="font-bold text-lg text-center">Shoes!</h2>
