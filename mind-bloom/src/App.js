@@ -1,6 +1,5 @@
-import Body from "./Body";
-import ButtonMain from "./ButtonMain";
-import Navbar from "./Navbar";
+import Body from "./components/Body";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
