@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
-import logo from './../pictures/new_logo_face_brain.png'; // Adjust the import path as needed
+import LogoNoText from '../components/LogoNoDescription';
 
-const AuthForm = ({ isSignUp }) => {
+const AuthForm = ({ isSignUp, onClose = () => {} }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -28,139 +28,113 @@ const AuthForm = ({ isSignUp }) => {
         await signInWithEmailAndPassword(auth, email, password);
         alert('Sign in successful!');
       }
+      onClose(); // Close the modal on successful submission
       navigate('/');
     } catch (err) {
       alert(err.message);
     }
   };
 
-    const handleGoogleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithPopup(auth, provider);
-      alert('Signed in with Google successfully!');
-      navigate('/workouts');
-    } catch (err) {
-      alert(err.message);
-    }
+  const handleLinkClick = (path) => {
+    onClose(); // Close the modal
+    navigate(path); // Navigate to the specified path
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img className="mx-auto h-10 w-auto" src={logo} alt="Logo" />
-        <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">
-          {isSignUp ? 'Sign up for an account' : 'Sign in to your account'}
-        </h2>
-      </div>
-
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" onSubmit={onFinish}>
-          {isSignUp && (
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="username" className="block text-sm font-medium text-gray-900">
-                  Username
-                </label>
-              </div>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  autoComplete="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                />
-              </div>
-            </div>
-          )}
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-900">
-              Email address
+    <div className="p-6">
+      <form onSubmit={onFinish}>
+        {isSignUp && (
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+              Username
             </label>
-            <div className="mt-2">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-              />
-            </div>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
           </div>
-
-          <div>
-            <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-900">
-                Password
-              </label>
-              <div className="text-sm">
-              </div>
-            </div>
-            <div className="mt-2">
-              <input
-                type="password"
-                name="password"
-                id="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-              />
-            </div>
+        )}
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+        {isSignUp && (
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
           </div>
-
-          {isSignUp && (
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-900">
-                  Confirm Password
-                </label>
-              </div>
-              <div className="mt-2">
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  autoComplete="current-password"
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                />
-              </div>
-            </div>
-          )}
-
-          <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              {isSignUp ? 'Sign Up' : 'Sign In'}
-            </button>
-          </div>
-        </form>
-
-        <div className="mt-6">
+        )}
+        <div className="flex items-center justify-between">
           <button
-            onClick={handleGoogleSignIn}
-            className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-base font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Sign in with Google
+            {isSignUp ? 'Sign Up' : 'Sign In'}
           </button>
         </div>
-        <p className="mt-10 text-center text-sm text-gray-500">
-          Not a member? <Link to={isSignUp ? '/signin' : '/signup'} className="font-semibold text-indigo-600 hover:text-indigo-500">{isSignUp ? 'Sign In' : 'Sign Up'}</Link>
-        </p>
+      </form>
+      <div className="mt-4">
+        <button
+          onClick={() => {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider)
+              .then((result) => {
+                alert('Sign in with Google successful!');
+                onClose(); // Close the modal on successful submission
+                navigate('/');
+              })
+              .catch((error) => {
+                alert(error.message);
+              });
+          }}
+          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+        >
+          Sign in with Google
+        </button>
       </div>
+      <p className="mt-4 text-center text-gray-600">
+        {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
+        <span
+          onClick={() => handleLinkClick(isSignUp ? '/signin' : '/signup')}
+          className="text-blue-500 hover:text-blue-700 cursor-pointer">
+          {isSignUp ? 'Sign In' : 'Sign Up'}
+        </span>
+      </p>
     </div>
   );
 };

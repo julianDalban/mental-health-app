@@ -5,7 +5,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import Logo from './Logo';
 import ButtonMain from "./ButtonMain";
 
-function Navbar() {
+function Navbar({ openModal}) {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -53,7 +53,7 @@ function Navbar() {
             {isAuthenticated ? (
               <ButtonMain text={'Logout'} onClick={handleLogout}/>
             ) : (
-              <ButtonMain text={'Login'} onClick={() => navigate('/signin')}/>
+              <ButtonMain text={'Login'} onClick={openModal}/>
             )}
           </div>
         </div>
