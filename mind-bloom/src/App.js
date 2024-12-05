@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/home"
 import AuthForm from "./containers/form";
+import LogoNoText from "./components/LogoNoDescription";
 
 
 function App() {
