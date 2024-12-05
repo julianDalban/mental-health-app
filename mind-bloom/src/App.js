@@ -23,7 +23,6 @@ function App() {
       <Navbar openModal={openModal} />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path='contact' element={<Contact />} />
         <Route path="signin" element={<AuthForm isSignUp={false} />} />
         <Route path="signup" element={<AuthForm isSignUp={true} />} />
         <Route path="about" element={<About />} />
