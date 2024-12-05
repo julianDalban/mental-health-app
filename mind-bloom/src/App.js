@@ -8,6 +8,8 @@ import NewEntry from "./pages/createentry";
 import UpdateEntry from "./pages/updateentry";
 import Entry from "./components/entryDetail";
 import Modal from "./components/OverlayModal";
+import Error from "./pages/errorpage";
+import About from "./pages/about";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,10 +24,12 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="signin" element={<AuthForm isSignUp={false} />} />
         <Route path="signup" element={<AuthForm isSignUp={true} />} />
+        <Route path="about" element={<About />} />
         <Route path="journal" element={<Journal />} />
         <Route path="journal/create" element={<NewEntry />} />
         <Route path="journal/:id" element={<Entry />} />
         <Route path="journal/:id/edit" element={<UpdateEntry />} />
+        <Route path="*" element={<Error />} />
       </Routes>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <AuthForm isSignUp={false} onClose={closeModal} />
