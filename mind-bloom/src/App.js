@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
-import Home from "./pages/home"
+import Home from "./pages/home";
 import AuthForm from "./containers/form";
 import Journal from "./pages/journal";
 import NewEntry from "./pages/createentry";
@@ -10,6 +10,7 @@ import Entry from "./components/entryDetail";
 import Modal from "./components/OverlayModal";
 import Error from "./pages/errorpage";
 import About from "./pages/about";
+import ProtectedRoute from "./components/protectedRoute"; // Import the ProtectedRoute component
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,10 +26,10 @@ function App() {
         <Route path="signin" element={<AuthForm isSignUp={false} />} />
         <Route path="signup" element={<AuthForm isSignUp={true} />} />
         <Route path="about" element={<About />} />
-        <Route path="journal" element={<Journal />} />
-        <Route path="journal/create" element={<NewEntry />} />
-        <Route path="journal/:id" element={<Entry />} />
-        <Route path="journal/:id/edit" element={<UpdateEntry />} />
+        <Route path="journal" element={<ProtectedRoute element={Journal} />} />
+        <Route path="journal/create" element={<ProtectedRoute element={NewEntry} />} />
+        <Route path="journal/:id" element={<ProtectedRoute element={Entry} />} />
+        <Route path="journal/:id/edit" element={<ProtectedRoute element={UpdateEntry} />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Modal isOpen={isModalOpen} onClose={closeModal}>

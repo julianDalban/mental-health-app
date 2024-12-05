@@ -4,6 +4,7 @@ import { auth } from '../config/firebase';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import Logo from './Logo';
 import ButtonMain from "./ButtonMain";
+import DailyQuote from "./dailyQuote";
 
 function Navbar({ openModal}) {
   const navigate = useNavigate();
@@ -42,11 +43,11 @@ function Navbar({ openModal}) {
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="justify-left"><Logo /></div>
+          <div>Insert Quote Component Here</div>
           <div className="hidden md:flex space-x-4">
             <ButtonMain text={'Home'} onClick={() => navigate('/')}/>
             <ButtonMain text={'About'} onClick={() => navigate('/about')}/>
             <ButtonMain text={'Services'} onClick={() => navigate('/services')}/>
-            <ButtonMain text={'Contact'} onClick={() => navigate('/contact')}/>
             {isAuthenticated &&(
               <ButtonMain text={'Journal'} onClick={() => navigate('/journal')}/>
             )}

@@ -1,29 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const About = () => {
-  const [quote, setQuote] = useState('');
-  const [author, setAuthor] = useState('');
-
-  useEffect(() => {
-    const fetchQuote = async () => {
-      try {
-        const response = await fetch('https://api.api-ninjas.com/v1/quotes', {
-          headers: {
-            'X-Api-Key': '9LDqAagcTeAKXenyLe+0BA==iw89IECzugjM86lp',
-          },
-        });
-        const data = await response.json();
-        if (data.length > 0) {
-          setQuote(data[0].quote);
-          setAuthor(data[0].author);
-        }
-      } catch (error) {
-        console.error('Error fetching quote:', error);
-      }
-    };
-
-    fetchQuote();
-  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -47,13 +24,6 @@ const About = () => {
             At Mind Bloom, we believe that mental health is just as important as physical health. Our app provides a safe and supportive environment for you to explore and improve your mental well-being. Join our community and take the first step towards a healthier, happier you.
           </p>
         </div>
-        {quote && (
-          <div className="mb-8">
-            <h2 className="text-2xl font-semibold mb-2">Daily Quote</h2>
-            <p className="text-gray-700 italic mb-2">"{quote}"</p>
-            {author && <p className="text-gray-700 text-right">- {author}</p>}
-          </div>
-        )}
       </div>
     </div>
   );
