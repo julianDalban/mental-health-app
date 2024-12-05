@@ -29,7 +29,7 @@ const AuthForm = ({ isSignUp }) => {
         await signInWithEmailAndPassword(auth, email, password);
         alert('Sign in successful!');
       }
-      navigate('/workouts');
+      navigate('/');
     } catch (err) {
       alert(err.message);
     }
@@ -71,6 +71,7 @@ const AuthForm = ({ isSignUp }) => {
                   id="username"
                   autoComplete="username"
                   value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
                 />
@@ -89,6 +90,7 @@ const AuthForm = ({ isSignUp }) => {
                 id="email"
                 autoComplete="email"
                 value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
               />
@@ -101,9 +103,6 @@ const AuthForm = ({ isSignUp }) => {
                 Password
               </label>
               <div className="text-sm">
-                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                  Forgot password?
-                </a>
               </div>
             </div>
             <div className="mt-2">
@@ -113,6 +112,7 @@ const AuthForm = ({ isSignUp }) => {
                 id="password"
                 autoComplete="current-password"
                 value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
               />
@@ -132,6 +132,7 @@ const AuthForm = ({ isSignUp }) => {
                   name="confirmPassword"
                   id="confirmPassword"
                   autoComplete="current-password"
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
                 />
