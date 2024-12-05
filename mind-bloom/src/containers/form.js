@@ -53,6 +53,7 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
             <input
               type="text"
               id="username"
+              placeholder='e.g. JohnDoe'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -67,6 +68,7 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
           <input
             type="email"
             id="email"
+            placeholder='e.g. john.doe@hello.com'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
