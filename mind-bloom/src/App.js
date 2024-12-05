@@ -29,7 +29,7 @@ function App() {
         <Route path="journal/:id/edit" element={<UpdateEntry />} />
       </Routes>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <AuthForm isSignUp={false} />
+        <AuthForm isSignUp={false} onClose={closeModal} />
       </Modal>
     </Router>
   );

@@ -4,7 +4,7 @@ import { auth } from '../config/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
 import LogoNoText from '../components/LogoNoDescription';
 
-const AuthForm = ({ isSignUp, onClose }) => {
+const AuthForm = ({ isSignUp, onClose = () => {} }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -33,6 +33,11 @@ const AuthForm = ({ isSignUp, onClose }) => {
     } catch (err) {
       alert(err.message);
     }
+  };
+
+  const handleLinkClick = (path) => {
+    onClose(); // Close the modal
+    navigate(path); // Navigate to the specified path
   };
 
   return (
@@ -124,9 +129,11 @@ const AuthForm = ({ isSignUp, onClose }) => {
       </div>
       <p className="mt-4 text-center text-gray-600">
         {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
-        <Link to={isSignUp ? '/signin' : '/signup'} className="text-blue-500 hover:text-blue-700">
+        <span
+          onClick={() => handleLinkClick(isSignUp ? '/signin' : '/signup')}
+          className="text-blue-500 hover:text-blue-700 cursor-pointer">
           {isSignUp ? 'Sign In' : 'Sign Up'}
-        </Link>
+        </span>
       </p>
     </div>
   );
