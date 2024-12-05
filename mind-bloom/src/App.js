@@ -7,7 +7,6 @@ import NewEntry from "./pages/createentry";
 import UpdateEntry from "./pages/updateentry";
 import Entry from "./components/entryDetail";
 
-
 function App() {
   return (
     <Router>
