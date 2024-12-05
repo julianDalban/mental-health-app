@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
 import LogoNoText from '../components/LogoNoDescription';
+import ButtonTernary from '../components/ButtonTernary';
+import ButtonSecondary from '../components/ButtonSecondary';
 
 const AuthForm = ({ isSignUp, onClose = () => {} }) => {
   const navigate = useNavigate();
@@ -100,32 +102,29 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
           </div>
         )}
         <div className="flex items-center justify-between">
-          <button
+          {/* <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             {isSignUp ? 'Sign Up' : 'Sign In'}
-          </button>
+          </button> */}
+          <ButtonSecondary text={isSignUp ? 'Sign Up' : 'Sign In'} type='submit' />
         </div>
       </form>
-      <div className="mt-4">
-        <button
-          onClick={() => {
-            const provider = new GoogleAuthProvider();
-            signInWithPopup(auth, provider)
-              .then((result) => {
-                alert('Sign in with Google successful!');
-                onClose(); // Close the modal on successful submission
-                navigate('/');
-              })
-              .catch((error) => {
-                alert(error.message);
-              });
-          }}
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-        >
-          Sign in with Google
-        </button>
+      <div className="hidden md:flex space-x-4">
+        <ButtonTernary text='Sign in with Google' onClick={() => {
+          const provider = new GoogleAuthProvider();
+          signInWithPopup(auth, provider)
+            .then((result) => {
+              alert('Sign in with Google successful!');
+              onClose(); // Close the modal on successful submission
+              navigate('/');
+            })
+            .catch((error) => {
+              alert(error.message);
+            });
+        }} 
+        />
       </div>
       <p className="mt-4 text-center text-gray-600">
         {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}

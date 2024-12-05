@@ -8,6 +8,7 @@ import NewEntry from "./pages/createentry";
 import UpdateEntry from "./pages/updateentry";
 import Entry from "./components/entryDetail";
 import Modal from "./components/OverlayModal";
+import Contact from "./pages/contact";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Navbar openModal={openModal} />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path='contact' element={<Contact />} />
         <Route path="signin" element={<AuthForm isSignUp={false} />} />
         <Route path="signup" element={<AuthForm isSignUp={true} />} />
         <Route path="journal" element={<Journal />} />
