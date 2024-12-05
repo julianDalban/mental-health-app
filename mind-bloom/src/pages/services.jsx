@@ -3,8 +3,7 @@ import TextType from "../components/TextType";
 const Services = () => {
   return (
     <div>
-      <h1>Testing </h1>
-            <TextType text={'Welcome to Mind Bloom'} author={'Jd'}/>
+      <h1>Testing page</h1>
     </div>
   );
 };

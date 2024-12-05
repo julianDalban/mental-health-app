@@ -5,6 +5,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import Logo from './Logo';
 import ButtonMain from "./ButtonMain";
 import DailyQuote from "./dailyQuote";
+import TextType from "./TextType";
 
 function Navbar({ openModal}) {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ function Navbar({ openModal}) {
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="justify-left"><Logo /></div>
-          <div>Insert Quote Component Here</div>
+          <TextType text={'Welcome to Mind Bloom'} author={'Julian Dalban'} />
           <div className="hidden md:flex space-x-4">
             <ButtonMain text={'Home'} onClick={() => navigate('/')}/>
             <ButtonMain text={'About'} onClick={() => navigate('/about')}/>
