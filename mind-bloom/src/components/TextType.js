@@ -4,7 +4,7 @@ import { TypeAnimation } from "react-type-animation";
 const TextType = ({text, author}) => {
     return(
         <div className="flex justify-between items-center relative bg-blue-500 h-[9rem] w-[20rem]">
-            <div className="absolute bottom-0 bg-red-300 h-[8rem] w-[18rem] p-3 line-clamp-4 text-clip hover:line-clamp-none">
+            <div className="absolute bottom-0 bg-red-300 h-[8rem] w-[18rem] p-3 line-clamp-4 hover:line-clamp-none">
                 <TypeAnimation
                     sequence={[
                         //Text goes here
