@@ -44,7 +44,7 @@ function Navbar({ openModal}) {
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="justify-left"><Logo /></div>
-          <TextType text={'Welcome to Mind Bloom'} author={'Julian Dalban'} />
+          <TextType text={'Welcome to Mind Bloom. I am testing long text to see functionality. Hello World!. Just a bit more text to see collision........ ....... ........ ......... ........'} author={'Julian Dalban'} />
           <div className="hidden md:flex space-x-4">
             <ButtonMain text={'Home'} onClick={() => navigate('/')}/>
             <ButtonMain text={'About'} onClick={() => navigate('/about')}/>
