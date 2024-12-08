@@ -1,5 +1,3 @@
-import TextType from "../components/TextType";
-
 const Services = () => {
   return (
     <div>
