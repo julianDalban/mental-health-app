@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from '../config/firebase';
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import Logo from './Logo';
 import ButtonMain from "./ButtonMain";
 import DailyQuote from "./dailyQuote";
 import TextType from "./TextType";
+import { showConfirmationDialog } from "./ConfirmationDialog";
 
 function Navbar({ openModal}) {
   const navigate = useNavigate();
@@ -24,19 +27,18 @@ function Navbar({ openModal}) {
   }, []);
 
   const handleLogout = async () => {
-    const confirmed = window.confirm("Are you sure you want to log out?");
-    if (!confirmed) {
-        return;
-    }
-
     try {
         await signOut(auth);
-        alert("You have been logged out.");
+        toast.success("You have been logged out.");
         navigate('/');
     } catch (err) {
         console.error("Error logging out: ", err);
-        alert("Error logging out: " + err.message);
+        toast.error("Error logging out: " + err.message);
     }
+  };
+
+  const confirmLogout = () => {
+    showConfirmationDialog('Are you sure you want to log out?', handleLogout);
   };
 
   return (
@@ -53,7 +55,7 @@ function Navbar({ openModal}) {
               <ButtonMain text={'Journal'} onClick={() => navigate('/journal')}/>
             )}
             {isAuthenticated ? (
-              <ButtonMain text={'Logout'} onClick={handleLogout}/>
+              <ButtonMain text={'Logout'} onClick={confirmLogout}/>
             ) : (
               <ButtonMain text={'Login'} onClick={openModal}/>
             )}

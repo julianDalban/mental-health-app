@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 import Navbar from "./components/Navbar";
 import Home from "./pages/home";
 import AuthForm from "./containers/form";
@@ -37,6 +39,7 @@ function App() {
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <AuthForm isSignUp={false} onClose={closeModal} />
       </Modal>
+      <ToastContainer />
     </Router>
   );
 }

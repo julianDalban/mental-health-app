@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import LogoNoText from '../components/LogoNoDescription';
 import ButtonTernary from '../components/ButtonTernary';
 import ButtonSecondary from '../components/ButtonSecondary';
@@ -17,7 +19,7 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
     e.preventDefault();
 
     if (isSignUp && password !== confirmPassword) {
-      alert('Passwords do not match!');
+      toast.error('Passwords do not match!');
       return;
     }
 
@@ -25,15 +27,15 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
       if (isSignUp) {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(userCredential.user, { displayName: username });
-        alert('Sign up successful!');
+        toast.success('Sign up successful!');
       } else {
         await signInWithEmailAndPassword(auth, email, password);
-        alert('Sign in successful!');
+        toast.success('Sign in successful!');
       }
       onClose(); // Close the modal on successful submission
       navigate('/');
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
     }
   };
 
@@ -104,12 +106,6 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
           </div>
         )}
         <div className="flex items-center justify-between">
-          {/* <button
-            type="submit"
-            className="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            {isSignUp ? 'Sign Up' : 'Sign In'}
-          </button> */}
           <ButtonSecondary text={isSignUp ? 'Sign Up' : 'Sign In'} type='submit' />
         </div>
       </form>
@@ -118,12 +114,12 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
           const provider = new GoogleAuthProvider();
           signInWithPopup(auth, provider)
             .then((result) => {
-              alert('Sign in with Google successful!');
+              toast.success('Sign in with Google successful!');
               onClose(); // Close the modal on successful submission
               navigate('/');
             })
             .catch((error) => {
-              alert(error.message);
+              toast.error(error.message);
             });
         }} 
         />
