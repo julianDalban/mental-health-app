@@ -3,7 +3,7 @@ import { TypeAnimation } from "react-type-animation";
 
 const TextType = ({text, author}) => {
     return(
-        <div className="border-2 border-emerald-500 outline-offset-2 rounded-md flex justify-between items-center relative h-[9rem] w-[20rem]">
+        <div className="border-2 border-emerald-500 bg-emerald-400 outline-offset-2 rounded-md flex justify-between items-center relative h-[9rem] w-[20rem]">
             <div className="absolute bottom-0 h-[8rem] w-[18rem] p-3 line-clamp-4">
                 <TypeAnimation
                     sequence={[
