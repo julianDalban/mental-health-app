@@ -16,11 +16,11 @@ const TextType = ({text, author}) => {
                     deletionSpeed={50}
                     speed={30}
                     cursor={false}
-                    style={{fontSize: '1rem', display: 'flex', justifyContent: 'left', alignItems: 'left', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'}}
+                    style={{fontSize: '1rem', display: 'flex', justifyContent: 'left', alignItems: 'left', cursor: 'default', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'}}
                     repeat={Infinity}
                 />
             </div>
-            <div className="absolute top-0 left-0 text-sm font-serif subpixel-antialiased italic font-medium leading-6"> {author} </div>
+            <div className="absolute cursor-default top-0 left-0 text-sm font-serif subpixel-antialiased italic font-medium leading-6"> {author} </div>
         </div>
     );
 };

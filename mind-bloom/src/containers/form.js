@@ -1,12 +1,11 @@
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../config/firebase';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import LogoNoText from '../components/LogoNoDescription';
-import ButtonTernary from '../components/ButtonTernary';
 import ButtonSecondary from '../components/ButtonSecondary';
+import ButtonTernary from '../components/ButtonTernary';
+import { auth } from '../config/firebase';
 
 const AuthForm = ({ isSignUp, onClose = () => {} }) => {
   const navigate = useNavigate();

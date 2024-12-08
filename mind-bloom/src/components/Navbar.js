@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { auth } from '../config/firebase';
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Logo from './Logo';
+import { auth } from '../config/firebase';
 import ButtonMain from "./ButtonMain";
-import DailyQuote from "./dailyQuote";
-import TextType from "./TextType";
 import { showConfirmationDialog } from "./ConfirmationDialog";
+import Logo from './Logo';
+import TextType from "./TextType";
 
 function Navbar({ openModal}) {
   const navigate = useNavigate();
