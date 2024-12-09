@@ -3,7 +3,7 @@ import React from 'react';
 const Services = () => {
   const services = [
     {
-        title: 'Octave Therapy',
+        title: 'Therapy',
         description: 'Search for in person or virtual therapy sessions with a licensed therapist at locations near you.',
         link: 'https://www.findoctave.com/therapists?', // Octave therapy
       },
@@ -13,24 +13,19 @@ const Services = () => {
       link: 'https://www.betterhelp.com/get-started/?go=true&utm_content=136566704138&utm_source=AdWords&utm_medium=Search_PPC_c&utm_term=free+counseling+services_b&network=g&placement=&target=&matchtype=b&utm_campaign=16806402951&ad_type=text&adposition=&kwd_id=kwd-179620718&gad_source=1&gclid=Cj0KCQiApNW6BhD5ARIsACmEbkVd_pNpmhon0csmn6sFFVABspOEwmN_G-8ZxXyo8Us4NgIbsNua8sYaAqXCEALw_wcB&not_found=1&gor=start', // Better help 
     },
     {
-      title: 'Therapy',
-      description: 'Various therapy options including cognitive-behavioral therapy, art therapy, and more.',
-      link: 'https://www.example.com/therapy', // Replace with actual link
-    },
-    {
       title: 'Support Groups',
       description: 'Join support groups to connect with others who are experiencing similar challenges.',
-      link: 'https://www.example.com/support-groups', // Replace with actual link
+      link: 'https://www.psychologytoday.com/us/groups', // psychology today
     },
     {
       title: 'Crisis Intervention',
       description: 'Immediate assistance for individuals in crisis situations.',
-      link: 'https://www.example.com/crisis-intervention', // Replace with actual link
+      link: 'https://988lifeline.org/', // suicide hotline
     },
     {
       title: 'Mindfulness Training',
       description: 'Learn mindfulness techniques to help manage stress and improve mental well-being.',
-      link: 'https://www.example.com/mindfulness-training', // Replace with actual link
+      link: 'https://www.mindful.org/meditation/mindfulness-getting-started/', // mindful.com
     },
   ];
 
