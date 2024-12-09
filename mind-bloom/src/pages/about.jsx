@@ -6,6 +6,8 @@ const About = () => {
 
   useEffect(() => {
     const fetchQuote = async () => {
+      if (quote) return; // Check if the quote has already been fetched
+
       try {
         const response = await fetch('https://api.api-ninjas.com/v1/quotes', {
           headers: {
@@ -23,7 +25,7 @@ const About = () => {
     };
 
     fetchQuote();
-  }, []);
+  }, [quote]); // Add quote as a dependency to ensure it only runs once
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">

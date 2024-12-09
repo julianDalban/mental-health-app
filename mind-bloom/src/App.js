@@ -10,6 +10,7 @@ import Entry from "./components/entryDetail";
 import Modal from "./components/OverlayModal";
 import Error from "./pages/errorpage";
 import About from "./pages/about";
+import Services from "./pages/services";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,6 +26,7 @@ function App() {
         <Route path="signin" element={<AuthForm isSignUp={false} />} />
         <Route path="signup" element={<AuthForm isSignUp={true} />} />
         <Route path="about" element={<About />} />
+        <Route path="services" element={<Services />} />
         <Route path="journal" element={<Journal />} />
         <Route path="journal/create" element={<NewEntry />} />
         <Route path="journal/:id" element={<Entry />} />
