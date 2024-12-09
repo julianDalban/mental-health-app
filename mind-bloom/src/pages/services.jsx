@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 
 const Services = () => {
@@ -54,12 +53,6 @@ const Services = () => {
           ))}
         </div>
       </div>
-=======
-const Services = () => {
-  return (
-    <div>
-      <h1>Testing page</h1>
->>>>>>> 494b93c0b53013a4424140687f1a1e278061ce67
     </div>
   );
 };
