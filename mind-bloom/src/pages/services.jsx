@@ -34,7 +34,7 @@ const Services = () => {
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl">
         <h1 className="text-3xl font-bold mb-4">Mental Health Services</h1>
         <p className="text-gray-700 mb-4">
-          Explore our range of mental health services designed to support your well-being.
+          Explore our range of popular mental health services designed to support your well-being.
         </p>
         <div>
           {services.map((service, index) => (
