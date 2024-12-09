@@ -1,7 +1,7 @@
 function ButtonMain({text, onClick}) {
   return (
-    <div className="max-w-sm shadow-lg mx-auto flex items-center">
-      <button className="border font-serif border-double borde-slate-100 px-5 py-1 rounded-xl shadow-lg transition 
+    <div className="invisible max-w-sm shadow-lg mx-auto flex items-center">
+      <button className="visible border-1 font-serif border-double border-slate-100 px-5 py-1 rounded-full shadow-lg transition 
       ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
       hover:bg-teal-500 duration-300"
       onClick={onClick}>{text}

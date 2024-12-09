@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const About = () => {
+<<<<<<< HEAD
   const [quote, setQuote] = useState('');
   const [author, setAuthor] = useState('');
 
@@ -26,6 +27,8 @@ const About = () => {
 
     fetchQuote();
   }, [quote]); // Add quote as a dependency to ensure it only runs once
+=======
+>>>>>>> 494b93c0b53013a4424140687f1a1e278061ce67
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -49,13 +52,6 @@ const About = () => {
             At Mind Bloom, we believe that mental health is just as important as physical health. Our app provides a safe and supportive environment for you to explore and improve your mental well-being. Join our community and take the first step towards a healthier, happier you.
           </p>
         </div>
-        {quote && (
-          <div className="mb-8">
-            <h2 className="text-2xl font-semibold mb-2">Daily Quote</h2>
-            <p className="text-gray-700 italic mb-2">"{quote}"</p>
-            {author && <p className="text-gray-700 text-right">- {author}</p>}
-          </div>
-        )}
       </div>
     </div>
   );

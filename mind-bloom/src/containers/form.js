@@ -1,8 +1,11 @@
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ButtonSecondary from '../components/ButtonSecondary';
+import ButtonTernary from '../components/ButtonTernary';
 import { auth } from '../config/firebase';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
-import LogoNoText from '../components/LogoNoDescription';
 
 const AuthForm = ({ isSignUp, onClose = () => {} }) => {
   const navigate = useNavigate();
@@ -15,7 +18,7 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
     e.preventDefault();
 
     if (isSignUp && password !== confirmPassword) {
-      alert('Passwords do not match!');
+      toast.error('Passwords do not match!');
       return;
     }
 
@@ -23,15 +26,15 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
       if (isSignUp) {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(userCredential.user, { displayName: username });
-        alert('Sign up successful!');
+        toast.success('Sign up successful!');
       } else {
         await signInWithEmailAndPassword(auth, email, password);
-        alert('Sign in successful!');
+        toast.success('Sign in successful!');
       }
       onClose(); // Close the modal on successful submission
       navigate('/');
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
     }
   };
 
@@ -51,6 +54,7 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
             <input
               type="text"
               id="username"
+              placeholder='e.g. JohnDoe'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -59,12 +63,13 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
           </div>
         )}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label className="block text-gray-700 text-m font-bold mb-2" htmlFor="email">
             Email
           </label>
           <input
             type="email"
             id="email"
+            placeholder='e.g. john.doe@hello.com'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -72,7 +77,7 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label className="block text-gray-700 text-m font-bold mb-2" htmlFor="password">
             Password
           </label>
           <input
@@ -100,32 +105,23 @@ const AuthForm = ({ isSignUp, onClose = () => {} }) => {
           </div>
         )}
         <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            {isSignUp ? 'Sign Up' : 'Sign In'}
-          </button>
+          <ButtonSecondary text={isSignUp ? 'Sign Up' : 'Sign In'} type='submit' />
         </div>
       </form>
-      <div className="mt-4">
-        <button
-          onClick={() => {
-            const provider = new GoogleAuthProvider();
-            signInWithPopup(auth, provider)
-              .then((result) => {
-                alert('Sign in with Google successful!');
-                onClose(); // Close the modal on successful submission
-                navigate('/');
-              })
-              .catch((error) => {
-                alert(error.message);
-              });
-          }}
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-        >
-          Sign in with Google
-        </button>
+      <div className="hidden md:flex space-x-4">
+        <ButtonTernary text='Sign in with Google' onClick={() => {
+          const provider = new GoogleAuthProvider();
+          signInWithPopup(auth, provider)
+            .then((result) => {
+              toast.success('Sign in with Google successful!');
+              onClose(); // Close the modal on successful submission
+              navigate('/');
+            })
+            .catch((error) => {
+              toast.error(error.message);
+            });
+        }} 
+        />
       </div>
       <p className="mt-4 text-center text-gray-600">
         {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
