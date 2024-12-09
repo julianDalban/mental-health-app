@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const About = () => {
-<<<<<<< HEAD
   const [quote, setQuote] = useState('');
   const [author, setAuthor] = useState('');
 
@@ -27,8 +26,6 @@ const About = () => {
 
     fetchQuote();
   }, [quote]); // Add quote as a dependency to ensure it only runs once
-=======
->>>>>>> 494b93c0b53013a4424140687f1a1e278061ce67
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
