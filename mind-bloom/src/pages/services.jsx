@@ -41,7 +41,9 @@ const Services = () => {
             <div key={index} className="mb-4">
               <h2 className="text-2xl font-semibold">{service.title}</h2>
               <p className="text-gray-700">{service.description}</p>
-              <a href={service.link} className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">
+              <a href={service.link} className="visible border-1 font-serif border-double border-slate-100 px-5 py-1 rounded-full shadow-lg transition 
+      ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
+      hover:bg-teal-500 duration-300" target="_blank" rel="noopener noreferrer">
                 Learn more
               </a>
             </div>
