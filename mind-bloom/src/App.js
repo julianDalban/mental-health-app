@@ -14,6 +14,8 @@ import Error from "./pages/errorpage";
 import About from "./pages/about";
 import ProtectedRoute from "./components/protectedRoute"; // Import the ProtectedRoute component
 import Services from "./pages/services";
+import { QuoteProvider } from "./components/QuoteContext";
+
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,26 +24,28 @@ function App() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <Router>
-      <Navbar openModal={openModal} />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path='services' element={<Services />} />
-        <Route path="signin" element={<AuthForm isSignUp={false} />} />
-        <Route path="signup" element={<AuthForm isSignUp={true} />} />
-        <Route path="about" element={<About />} />
-        <Route path="services" element={<Services />} />
-        <Route path="journal" element={<Journal />} />
-        <Route path="journal/create" element={<NewEntry />} />
-        <Route path="journal/:id" element={<Entry />} />
-        <Route path="journal/:id/edit" element={<UpdateEntry />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <AuthForm isSignUp={false} onClose={closeModal} />
-      </Modal>
-      <ToastContainer />
-    </Router>
+    <QuoteProvider>
+      <Router>
+        <Navbar openModal={openModal} />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path='services' element={<Services />} />
+          <Route path="signin" element={<AuthForm isSignUp={false} />} />
+          <Route path="signup" element={<AuthForm isSignUp={true} />} />
+          <Route path="about" element={<About />} />
+          <Route path="services" element={<Services />} />
+          <Route path="journal" element={<Journal />} />
+          <Route path="journal/create" element={<NewEntry />} />
+          <Route path="journal/:id" element={<Entry />} />
+          <Route path="journal/:id/edit" element={<UpdateEntry />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <AuthForm isSignUp={false} onClose={closeModal} />
+        </Modal>
+        <ToastContainer />
+      </Router>
+      </QuoteProvider>
   );
 }
 
