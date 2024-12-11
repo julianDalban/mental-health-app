@@ -3,7 +3,6 @@ import { db, auth } from "../config/firebase";
 import { collection, query, where, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
-import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -13,7 +12,6 @@ const Journal = () => {
   const [title, setTitle] = useState("");
   const [entry, setEntry] = useState("");
   const [entryId, setEntryId] = useState(null);
-  const navigate = useNavigate();
 
   const user = auth.currentUser;
 
