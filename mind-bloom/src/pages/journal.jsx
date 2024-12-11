@@ -120,7 +120,7 @@ const Journal = () => {
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center py-12" style={{ backgroundImage: `url(${Green})` }}>
     <div className="relative z-10 bg-green bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl w-full"></div>
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full">
+      <div className="bg-gray p-8 rounded-lg -w-2xl w-full">
         <h1 className="text-3xl font-bold mb-4">Your Journal</h1>
         <Calendar
           onChange={handleDateChange}
@@ -145,24 +145,32 @@ const Journal = () => {
               placeholder="Write your thoughts here..."
               className="w-full h-64 p-4 border rounded-lg mb-4"
             />
-            <button
-              onClick={handleSave}
-              className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-500"
-            >
-              Save Entry
-            </button>
+            <div className="flex justify-center">
+              <button
+                onClick={handleSave}
+                className="visible border-1 font-serif border-double border-slate-100 px-5 py-1 rounded-full shadow-lg transition 
+      ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
+      hover:bg-teal-500 duration-300"
+              >
+                Save Entry
+              </button>
+            </div>
             {entryId && (
+              <div className="flex justify-center">
               <button
                 onClick={handleDelete}
-                className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500 mt-4"
+                className="visible border-1 font-serif border-double border-slate-75 px-5 py-1 rounded-full shadow-lg transition 
+      ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
+      hover:bg-teal-500 duration-300"
               >
                 Delete Entry
               </button>
+              </div>
             )}
           </div>
         ) : (
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Create Entry for {selectedDate.toDateString()}</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-center">Create Entry for {selectedDate.toDateString()}</h2>
             <input
               type="text"
               value={title}
@@ -176,12 +184,16 @@ const Journal = () => {
               placeholder="Write your thoughts here..."
               className="w-full h-64 p-4 border rounded-lg mb-4"
             />
+            <div className="flex justify-center">
             <button
               onClick={handleSave}
-              className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-500"
+              className="visible border-1 font-serif border-double border-slate-100 px-5 py-1 rounded-full shadow-lg transition 
+      ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
+      hover:bg-teal-500 duration-300 mb-8"
             >
               Save Entry
             </button>
+            </div>
           </div>
         )}
       </div>

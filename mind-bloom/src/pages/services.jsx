@@ -4,10 +4,10 @@ import Green from './../pictures/Green.jpg';
 const Services = () => {
   const services = [
     {
-        title: 'Therapy',
-        description: 'Search for in person or virtual therapy sessions with a licensed therapist at locations near you.',
-        link: 'https://www.findoctave.com/therapists?', // Octave therapy
-      },
+      title: 'Therapy',
+      description: 'Search for in person or virtual therapy sessions with a licensed therapist at locations near you.',
+      link: 'https://www.findoctave.com/therapists?', // Octave therapy
+    },
     {
       title: 'Counseling',
       description: 'Professional counseling services to help you navigate through life’s challenges.',
@@ -23,23 +23,15 @@ const Services = () => {
       description: 'Immediate assistance for individuals in crisis situations.',
       link: 'https://988lifeline.org/', // suicide hotline
     },
-    {
-      title: 'Mindfulness Training',
-      description: 'Learn mindfulness techniques to help manage stress and improve mental well-being.',
-      link: 'https://www.mindful.org/meditation/mindfulness-getting-started/', // mindful.com
-    },
   ];
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center py-12" style={{ backgroundImage: `url(${Green})` }}>
-    <div className="relative z-10 bg-green bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl w-full"></div>
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl">
-        <h1 className="text-3xl font-bold mb-4">Mental Health Services</h1>
-        <p className="text-gray-700 mb-4">
+      <div className="relative z-10 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl w-full">
+        <h1 className="text-3xl font-bold mb-4 text-center">Mental Health Services</h1>
+        <p className="text-gray-700 mb-4 text-center">
           Explore our range of popular mental health services designed to support your well-being.
         </p>
-        </div>
         <div>
           {services.map((service, index) => (
             <div key={index} className="mb-4">
