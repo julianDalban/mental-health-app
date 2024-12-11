@@ -29,7 +29,7 @@ const Services = () => {
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center py-12" style={{ backgroundImage: `url(${Green})` }}>
       <div className="relative z-10 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl w-full">
         <h1 className="text-3xl font-bold mb-4 text-center">Mental Health Services</h1>
-        <p className="text-gray-700 mb-4 text-center">
+        <p className="text-gray-700 mb-6 text-center">
           Explore our range of popular mental health services designed to support your well-being.
         </p>
         <div>
