@@ -1,52 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Green from './../pictures/Green.jpg';
 
 const About = () => {
-  const [quote, setQuote] = useState('');
-  const [author, setAuthor] = useState('');
-
-  useEffect(() => {
-    const fetchQuote = async () => {
-      if (quote) return; // Check if the quote has already been fetched
-
-      try {
-        const response = await fetch('https://api.api-ninjas.com/v1/quotes', {
-          headers: {
-            'X-Api-Key': '9LDqAagcTeAKXenyLe+0BA==iw89IECzugjM86lp',
-          },
-        });
-        const data = await response.json();
-        if (data.length > 0) {
-          setQuote(data[0].quote);
-          setAuthor(data[0].author);
-        }
-      } catch (error) {
-        console.error('Error fetching quote:', error);
-      }
-    };
-
-    fetchQuote();
-  }, [quote]); // Add quote as a dependency to ensure it only runs once
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl">
-        <h1 className="text-3xl font-bold mb-4">Welcome to Mind Bloom</h1>
-        <p className="text-gray-700 mb-4">
-          Mind Bloom is your go-to app for mental health and wellness. Explore our services and resources to help you on your journey to better mental health.
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center py-12" style={{ backgroundImage: `url(${Green})` }}>
+      <div className="relative z-10 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl w-full">
+        <h1 className="text-4xl font-bold mb-6 text-center text-gray-800">About Us</h1>
+        <p className="text-gray-700 mb-8 text-center">
+          Welcome to our website! We are dedicated to providing the best services and resources for mental health and wellness.
         </p>
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">Our Features</h2>
-          <ul className="list-disc list-inside text-gray-700">
-            <li>Personalized mental health resources</li>
-            <li>Guided meditation and mindfulness exercises</li>
-            <li>Community support and forums</li>
-            <li>Professional counseling and therapy sessions</li>
-          </ul>
-        </div>
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">Why Choose Mind Bloom?</h2>
-          <p className="text-gray-700">
-            At Mind Bloom, we believe that mental health is just as important as physical health. Our app provides a safe and supportive environment for you to explore and improve your mental well-being. Join our community and take the first step towards a healthier, happier you.
+        <div className="text-center">
+          <h2 className="text-3xl font-semibold mb-4 text-gray-800">Our Mission</h2>
+          <p className="text-gray-700 mb-6">
+            Our mission is to support individuals on their journey to better mental health by providing comprehensive resources and services.
+          </p>
+          <h2 className="text-3xl font-semibold mb-4 text-gray-800">Contact Us</h2>
+          <p className="text-gray-700 mb-6">
+            If you have any questions or need further information, please feel free to contact us.
           </p>
         </div>
       </div>

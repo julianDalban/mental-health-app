@@ -5,6 +5,7 @@ import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Green from './../pictures/Green.jpg';
 
 const Journal = () => {
   const [entries, setEntries] = useState([]);
@@ -116,6 +117,8 @@ const Journal = () => {
   };
 
   return (
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center py-12" style={{ backgroundImage: `url(${Green})` }}>
+    <div className="relative z-10 bg-green bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl w-full"></div>
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full">
         <h1 className="text-3xl font-bold mb-4">Your Journal</h1>
@@ -125,6 +128,7 @@ const Journal = () => {
           className="mb-8"
           locale="en-US" // Start the week on Sunday
         />
+        </div>
         {entry ? (
           <div>
             <h2 className="text-2xl font-semibold mb-4">Entry for {selectedDate.toDateString()}</h2>
