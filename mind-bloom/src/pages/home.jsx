@@ -26,6 +26,12 @@ const Home = () => {
           </Link>
         </div>
         <div className="mb-8">
+          <h2 className="text-2xl font-semibold mb-2">You may ask, why green?</h2>
+          <p className="text-gray-700 mb-4">
+            The color green is often associated with tranquility, calmness, and relaxation. It is known to have a soothing effect on the mind and body, which can help reduce stress and anxiety. Green is also linked to nature and the outdoors, promoting a sense of peace and well-being. Incorporating green into your environment can create a more serene and balanced atmosphere, contributing positively to your mental health.
+          </p>
+        </div>
+        <div className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">Why Choose Mind Bloom?</h2>
           <p className="text-gray-700 mb-4">
             At Mind Bloom, we believe in providing comprehensive mental health support tailored to your needs. Our platform offers a variety of tools and resources to help you manage stress, improve your mental well-being, and connect with others who understand your journey.
