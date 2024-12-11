@@ -22,3 +22,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# unused files
+./pages/createentry.jsx
+./pages/updateentry.jsx

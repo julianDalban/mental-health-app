@@ -1,6 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
 const About = () => {
+  const [quote, setQuote] = useState('');
+  const [author, setAuthor] = useState('');
+
+  useEffect(() => {
+    const fetchQuote = async () => {
+      if (quote) return; // Check if the quote has already been fetched
+
+      try {
+        const response = await fetch('https://api.api-ninjas.com/v1/quotes', {
+          headers: {
+            'X-Api-Key': '9LDqAagcTeAKXenyLe+0BA==iw89IECzugjM86lp',
+          },
+        });
+        const data = await response.json();
+        if (data.length > 0) {
+          setQuote(data[0].quote);
+          setAuthor(data[0].author);
+        }
+      } catch (error) {
+        console.error('Error fetching quote:', error);
+      }
+    };
+
+    fetchQuote();
+  }, [quote]); // Add quote as a dependency to ensure it only runs once
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
