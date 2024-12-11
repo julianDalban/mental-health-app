@@ -1,11 +1,12 @@
 import React from 'react';
 import Green from './../pictures/Green.jpg';
+import therapy from './../pictures/therapy.jpeg';
 
 const Services = () => {
   const services = [
     {
       title: 'Therapy',
-      description: 'Search for in person or virtual therapy sessions with a licensed therapist at locations near you.',
+      description: 'Access one-on-one therapy with a licensed mental health professional to discuss anxiety, depression, relationship issues, and more. Sessions are available in-person or virtually to fit your schedule.',
       link: 'https://www.findoctave.com/therapists?', // Octave therapy
     },
     {
@@ -19,10 +20,10 @@ const Services = () => {
       link: 'https://www.psychologytoday.com/us/groups', // psychology today
     },
     {
-      title: 'Crisis Intervention',
-      description: 'Immediate assistance for individuals in crisis situations.',
-      link: 'https://988lifeline.org/', // suicide hotline
-    },
+      title: 'Online Diagnostic Assessments',
+      description: 'Self-assessment tools to help users gauge their mental health status.',
+      link: 'https://www.clinical-partners.co.uk/online-tests',
+    }
   ];
 
   return (
@@ -32,6 +33,7 @@ const Services = () => {
         <p className="text-gray-700 mb-6 text-center">
           Explore our range of popular mental health services designed to support your well-being.
         </p>
+        <img src={therapy} alt="Therapy" className="mb-6 rounded-lg shadow-lg w-1/2 mx-auto" />
         <div>
           {services.map((service, index) => (
             <div key={index} className="mb-4">
@@ -44,6 +46,17 @@ const Services = () => {
               </a>
             </div>
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <h2 className="text-2xl font-semibold text-red-500">Crisis Intervention</h2>
+          <p className="text-red-500">
+            Immediate assistance for individuals in crisis situations.
+          </p>
+          <a href="https://988lifeline.org/" className="visible border-1 font-serif border-double border-slate-100 px-5 py-1 rounded-full shadow-lg transition 
+      ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
+      hover:bg-teal-500 duration-300" target="_blank" rel="noopener noreferrer">
+            Learn more
+          </a>
         </div>
       </div>
     </div>
