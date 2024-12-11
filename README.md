@@ -9,9 +9,9 @@ How to Run the Application:
 
 1. Clone the repository: 
 
-  git clone http://github.com/julianDalban/mind-bloom.git 
+git clone http://github.com/julianDalban/mind-bloom.git 
   
-  cd mind-bloom 
+cd mind-bloom 
 
 2. Install dependencies: 
 
