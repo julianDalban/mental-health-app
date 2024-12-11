@@ -9,7 +9,7 @@ How to Run the Application:
 
 1. Clone the repository: 
 
-git clone http://github.com/julianDalban/mind-bloom.git 
+git clone https://github.com/julianDalban/mental-health-app
   
 cd mind-bloom 
 
