@@ -19,7 +19,6 @@ npm install
 
 3. Create a .env file in the root directory with your Firebase configuration and React quotes api key: 
 
-
 4. Start the application: 
 
   npm start
