@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { auth } from '../config/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
 import LogoNoText from '../components/LogoNoDescription';
-
+import Green from './../pictures/Green.jpg';
 
 const AuthForm = ({ isSignUp }) => {
   const navigate = useNavigate();
@@ -28,136 +28,74 @@ const AuthForm = ({ isSignUp }) => {
       return;
     }
 
-    try {
-      if (isSignUp) {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        await updateProfile(userCredential.user, { displayName: username });
-        alert('Sign up successful!');
-      } else {
-        await signInWithEmailAndPassword(auth, email, password);
-        alert('Sign in successful!');
-      }
-      navigate('/');
-    } catch (err) {
-      alert(err.message);
-    }
+    // Handle form submission logic here
   };
 
-  const handleGoogleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithPopup(auth, provider);
-      alert('Signed in with Google successfully!');
-      navigate('/');
-    } catch (err) {
-      alert(err.message);
-    }
+  const handleGoogleSignIn = () => {
+    // Handle Google sign-in logic here
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <LogoNoText/>
-        <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">
-          {isSignUp ? 'Sign up for an account' : 'Sign in to your account'}
-        </h2>
-      </div>
-
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" onSubmit={onFinish}>
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center py-12" style={{ backgroundImage: `url(${Green})` }}>
+      <div className="relative z-10 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-md w-full">
+        <div className="flex justify-center mb-4">
+          <LogoNoText />
+        </div>
+        <h1 className="text-3xl font-bold mb-4 text-center">{isSignUp ? 'Sign Up' : 'Login'}</h1>
+        <form onSubmit={onFinish}>
           {isSignUp && (
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="username" className="block text-sm font-medium text-gray-900">
-                  Username
-                </label>
-              </div>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  autoComplete="username"
-                  value={username}
-                  onChange={handleChange}
-                  required
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                />
-              </div>
-            </div>
-          )}
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-900">
-              Email address
-            </label>
-            <div className="mt-2">
+            <div className="mb-4">
+              <label className="block text-gray-700">Username</label>
               <input
-                type="email"
-                name="email"
-                id="email"
-                autoComplete="email"
-                value={email}
+                type="text"
+                name="username"
+                value={username}
                 onChange={handleChange}
+                className="w-full p-2 border rounded-lg"
                 required
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
               />
             </div>
+          )}
+          <div className="mb-4">
+            <label className="block text-gray-700">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-lg"
+              required
+            />
           </div>
-
-          <div>
-            <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-900">
-                Password
-              </label>
-            </div>
-            <div className="mt-2">
+          <div className="mb-4">
+            <label className="block text-gray-700">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-lg"
+              required
+            />
+          </div>
+          {isSignUp && (
+            <div className="mb-4">
+              <label className="block text-gray-700">Confirm Password</label>
               <input
                 type="password"
-                name="password"
-                id="password"
-                autoComplete="current-password"
-                value={password}
+                name="confirmPassword"
+                value={confirmPassword}
                 onChange={handleChange}
+                className="w-full p-2 border rounded-lg"
                 required
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
               />
             </div>
-          </div>
-
-          {isSignUp && (
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-900">
-                  Confirm Password
-                </label>
-              </div>
-              <div className="mt-2">
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  autoComplete="current-password"
-                  value={confirmPassword}
-                  onChange={handleChange}
-                  required
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                />
-              </div>
-            </div>
           )}
-
-          <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              {isSignUp ? 'Sign Up' : 'Sign In'}
-            </button>
-          </div>
+          <button type="submit" className="w-full bg-emerald-500 text-white p-2 rounded-lg hover:bg-emerald-600 transition duration-300">
+            {isSignUp ? 'Sign Up' : 'Login'}
+          </button>
         </form>
-
-        <div className="mt-6">
+        <div className="mt-4">
           <button
             onClick={handleGoogleSignIn}
             className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-base font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
