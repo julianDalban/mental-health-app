@@ -70,12 +70,10 @@ const AuthForm = ({ isSignUp, onClose = () => {}, isModal = false }) => {
   return (
     <div className={`p-6 items-center justify-center ${isAuthPage ? 'min-h-screen flex flex-col justify-center' : ''}`} style={{ backgroundImage: `url(${Green})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
     <div className={`p-6 ${isAuthPage ? 'relative z-10 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl w-full' : ''}`}>
-        <div className={`size-[10rem] mx-auto ${isAuthPage ? 'bg-inherit backdrop-blur-lg bg-opacity-10 bg-gray-900 rounded-xl shadow-sm' : ''}`}>
-          <div className='size-[10rem] mx-auto bg-inherit backdrop-blur-lg bg-opacity-10 bg-gray-900 rounded-xl shadow-sm'>
+          <div className='size-[10rem] mx-auto bg-inherit backdrop-blur-lg bg-opacity-10 rounded-xl shadow-sm'>
             <LogoNoText />
           </div>
-        </div>
-        <h1 className="text-3xl font-bold mb-4 text-center">{isSignUp ? 'Sign Up' : 'Login'}</h1>
+        <h1 className={`p-6 text-3xl font-bold mb-4 text-center text-gray-200 ${isAuthPage ? 'text-gray-700' : ''}`}>{isSignUp ? 'Sign Up' : 'Login'}</h1>
         <form onSubmit={onFinish} className='mb-4'>
           {isSignUp && (
             <div className="mb-4">
