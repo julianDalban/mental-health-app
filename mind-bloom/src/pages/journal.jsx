@@ -6,6 +6,9 @@ import 'react-calendar/dist/Calendar.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Green from './../pictures/Green.jpg';
+import ButtonSecondary from './../components/ButtonSecondary';
+import ButtonTernary from './../components/ButtonTernary';
+import { showConfirmationDialog } from "../components/ConfirmationDialog";
 
 const Journal = () => {
   const [entries, setEntries] = useState([]);
@@ -99,8 +102,7 @@ const Journal = () => {
   };
 
   const handleDelete = async () => {
-    const confirmed = window.confirm("Are you sure you want to delete this entry?");
-    if (confirmed && entryId) {
+    if (entryId) {
       try {
         const entryDoc = doc(db, "entries", entryId);
         await deleteDoc(entryDoc);
@@ -115,6 +117,10 @@ const Journal = () => {
       }
     }
   };
+
+  const confirmDelete = () => {
+    showConfirmationDialog("Are you sure you want to delete this entry?", handleDelete);
+  }
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center py-12" style={{ backgroundImage: `url(${Green})` }}>
@@ -146,25 +152,11 @@ const Journal = () => {
               className="w-full h-64 p-4 border rounded-lg mb-4"
             />
             <div className="flex justify-center">
-              <button
-                onClick={handleSave}
-                className="visible border-1 font-serif border-double border-slate-100 px-5 py-1 rounded-full shadow-lg transition 
-      ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
-      hover:bg-teal-500 duration-300"
-              >
-                Save Entry
-              </button>
+              <ButtonSecondary text={'Save Entry'} onClick={handleSave} />
             </div>
             {entryId && (
               <div className="flex justify-center mt-4">
-                <button
-                  onClick={handleDelete}
-                  className="visible border-1 font-serif border-double border-slate-75 px-5 py-1 rounded-full shadow-lg transition 
-      ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
-      hover:bg-teal-500 duration-300"
-                >
-                  Delete Entry
-                </button>
+                <ButtonTernary text={'Delete Entry'} onClick={confirmDelete} />
               </div>
             )}
           </div>
@@ -185,14 +177,7 @@ const Journal = () => {
               className="w-full h-64 p-4 border rounded-lg mb-4"
             />
             <div className="flex justify-center">
-            <button
-              onClick={handleSave}
-              className="visible border-1 font-serif border-double border-slate-100 px-5 py-1 rounded-full shadow-lg transition 
-      ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
-      hover:bg-teal-500 duration-300 mb-8"
-            >
-              Save Entry
-            </button>
+            <ButtonSecondary text={'Save Entry'} onClick={handleSave} />
             </div>
           </div>
         )}
