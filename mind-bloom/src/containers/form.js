@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
 import LogoNoText from '../components/LogoNoDescription';
@@ -28,15 +28,35 @@ const AuthForm = ({ isSignUp }) => {
       return;
     }
 
-    // Handle form submission logic here
+    try {
+      if (isSignUp) {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(userCredential.user, { displayName: username });
+        alert('Sign up successful!');
+      } else {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert('Sign in successful!');
+      }
+      navigate('/');
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
-  const handleGoogleSignIn = () => {
-    // Handle Google sign-in logic here
+  const handleGoogleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      alert('Signed in with Google successfully!');
+      navigate('/');
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center py-12" style={{ backgroundImage: `url(${Green})` }}>
+      <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${Green})` }}></div>
       <div className="relative z-10 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-md w-full">
         <div className="flex justify-center mb-4">
           <LogoNoText />
@@ -104,7 +124,7 @@ const AuthForm = ({ isSignUp }) => {
           </button>
         </div>
         <p className="mt-10 text-center text-sm text-gray-500">
-          Already a member? <Link to={isSignUp ? '/signin' : '/signup'} className="font-semibold text-indigo-600 hover:text-indigo-500">{isSignUp ? 'Sign In' : 'Sign Up'}</Link>
+          Not a member? <Link to={isSignUp ? '/signin' : '/signup'} className="font-semibold text-indigo-600 hover:text-indigo-500">{isSignUp ? 'Sign In' : 'Sign Up'}</Link>
         </p>
       </div>
     </div>
