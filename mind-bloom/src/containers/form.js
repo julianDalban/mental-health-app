@@ -104,7 +104,7 @@ const AuthForm = ({ isSignUp }) => {
           </button>
         </div>
         <p className="mt-10 text-center text-sm text-gray-500">
-          Not a member? <Link to={isSignUp ? '/signin' : '/signup'} className="font-semibold text-indigo-600 hover:text-indigo-500">{isSignUp ? 'Sign In' : 'Sign Up'}</Link>
+          Already a member? <Link to={isSignUp ? '/signin' : '/signup'} className="font-semibold text-indigo-600 hover:text-indigo-500">{isSignUp ? 'Sign In' : 'Sign Up'}</Link>
         </p>
       </div>
     </div>
