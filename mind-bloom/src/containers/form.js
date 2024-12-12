@@ -54,6 +54,7 @@ const AuthForm = ({ isSignUp, onClose = () => {}, isModal = false }) => {
     try {
       await signInWithPopup(auth, provider);
       toast.success('Signed in with Google successfully!');
+      onClose();
       navigate('/');
     } catch (err) {
       toast.error(err.message);
