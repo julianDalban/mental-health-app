@@ -130,7 +130,7 @@ const AuthForm = ({ isSignUp, onClose = () => {}, isModal = false }) => {
         </div>
         </form>
         <div className="flex items-center justify-between mb-4">
-          <ButtonTernary text={'Sign in with Google'} onClick={{handleGoogleSignIn}} />
+          <ButtonTernary text={'Sign in with Google'} onClick={handleGoogleSignIn} />
         </div>
         <p className="mt-4 text-center text-gray-600">
         {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
