@@ -119,7 +119,7 @@ const Journal = () => {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center py-12" style={{ backgroundImage: `url(${Green})` }}>
     <div className="relative z-10 bg-green bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl w-full"></div>
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center p-28 justify-center min-h-screen bg-white bg-opacity-90 rounded-xl">
       <div className="bg-gray p-8 rounded-lg -w-2xl w-full">
         <h1 className="text-3xl font-bold mb-4 text-center">Your Journal</h1>
         <Calendar
