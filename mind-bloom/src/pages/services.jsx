@@ -1,6 +1,7 @@
 import React from 'react';
 import Green from './../pictures/Green.jpg';
 import therapy from './../pictures/therapy.jpeg';
+import ButtonTernary from '../components/ButtonTernary';
 
 const Services = () => {
   const services = [
@@ -26,6 +27,10 @@ const Services = () => {
     }
   ];
 
+  const handleGetHelpClick = () => {
+    window.location.href = 'https://988lifeline.org/';
+  }
+
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center py-12" style={{ backgroundImage: `url(${Green})` }}>
       <div className="relative z-10 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl w-full">
@@ -39,24 +44,18 @@ const Services = () => {
             <div key={index} className="mb-4">
               <h2 className="text-2xl font-semibold">{service.title}</h2>
               <p className="text-gray-700">{service.description}</p>
-              <a href={service.link} className="visible border-1 font-serif border-double border-slate-100 px-5 py-1 rounded-full shadow-lg transition 
-      ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
-      hover:bg-teal-500 duration-300" target="_blank" rel="noopener noreferrer">
+              <a href={service.link} className="text-blue-500 hover:text-blue-700 cursor-pointer" target="_blank" rel="noopener noreferrer">
                 Learn more
               </a>
             </div>
           ))}
         </div>
-        <div className="mt-8 text-center">
-          <h2 className="text-2xl font-semibold text-red-500">Crisis Intervention</h2>
-          <p className="text-red-500">
+        <div className="mt-8 text-center items-center justify-center content-center">
+          <h2 className="text-2xl font-semibold text-center text-red-500">Crisis Intervention</h2>
+          <p className="text-red-500 text-center">
             Immediate assistance for individuals in crisis situations.
           </p>
-          <a href="https://988lifeline.org/" className="visible border-1 font-serif border-double border-slate-100 px-5 py-1 rounded-full shadow-lg transition 
-      ease-in-out delay-150 bg-red-500 hover:-translate-y-1 hover:scale-110 
-      hover:bg-teal-500 duration-300" target="_blank" rel="noopener noreferrer">
-            Learn more
-          </a>
+          <div className='flex justify-center'><ButtonTernary text={'Get help'} onClick={handleGetHelpClick} /></div>
         </div>
       </div>
     </div>
