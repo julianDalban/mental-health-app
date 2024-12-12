@@ -53,7 +53,7 @@ const Services = () => {
             Immediate assistance for individuals in crisis situations.
           </p>
           <a href="https://988lifeline.org/" className="visible border-1 font-serif border-double border-slate-100 px-5 py-1 rounded-full shadow-lg transition 
-      ease-in-out delay-150 bg-emerald-500 hover:-translate-y-1 hover:scale-110 
+      ease-in-out delay-150 bg-red-500 hover:-translate-y-1 hover:scale-110 
       hover:bg-teal-500 duration-300" target="_blank" rel="noopener noreferrer">
             Learn more
           </a>
