@@ -26,3 +26,4 @@ yarn-error.log*
 # unused files
 ./pages/createentry.jsx
 ./pages/updateentry.jsx
+./pages/about.jsx

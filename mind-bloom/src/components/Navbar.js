@@ -52,7 +52,6 @@ function Navbar({ openModal}) {
           <TextType text={quote} author={author} />
           <div className="hidden md:flex space-x-4">
             <ButtonMain text={'Home'} onClick={() => navigate('/')}/>
-            <ButtonMain text={'About'} onClick={() => navigate('/about')}/>
             <ButtonMain text={'Services'} onClick={() => navigate('/services')}/>
             {isAuthenticated &&(
               <ButtonMain text={'Journal'} onClick={() => navigate('/journal')}/>

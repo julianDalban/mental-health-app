@@ -11,7 +11,6 @@ import UpdateEntry from "./pages/updateentry";
 import Entry from "./components/entryDetail";
 import Modal from "./components/OverlayModal";
 import Error from "./pages/errorpage";
-import About from "./pages/about";
 import ProtectedRoute from "./components/protectedRoute";
 import Services from "./pages/services";
 import { QuoteProvider } from "./components/QuoteContext";
@@ -31,7 +30,6 @@ function App() {
           <Route path="services" element={<Services />} />
           <Route path="signin" element={<AuthForm isSignUp={false} />} />
           <Route path="signup" element={<AuthForm isSignUp={true} />} />
-          <Route path="about" element={<About />} />
           <Route path="services" element={<Services />} />
           <Route path="journal" element={<ProtectedRoute element={Journal} />} />
           <Route path="journal/create" element={<ProtectedRoute element={NewEntry} />} />
